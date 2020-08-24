@@ -1,0 +1,11 @@
+{
+  "itemGroup.pcpTab": "Pringle's Creature Pack",
+
+  "entity.pcp.red_panda":"Red Panda",
+
+  "item.pcp.red_panda_spawn_egg": "Red Panda Spawn Egg",
+
+  "entity.red_panda.ambient": "Red Panda squeaks",
+  "entity.red_panda.death": "Red Panda dies",
+  "entity.red_panda.hurt": "Red Panda hurts"
+}
