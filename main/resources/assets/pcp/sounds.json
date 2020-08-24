@@ -1,0 +1,40 @@
+{
+  "entity.red_panda.ambient": {
+    "category": "entity",
+    "subtitle": "entity.red_panda.ambient",
+    "sounds": [
+      {
+          "name": "pcp:entity/red_panda/ambient",
+          "stream": true,
+          "volume": 0.25
+      },
+      {
+        "name": "pcp:entity/red_panda/ambient1",
+        "stream": true,
+        "volume": 0.25
+      }
+    ]
+  },
+  "entity.red_panda.hurt": {
+    "category": "entity",
+    "subtitle": "entity.red_panda.hurt",
+    "sounds": [
+      {
+        "name": "pcp:entity/red_panda/hurt",
+        "stream": true,
+        "volume": 0.5
+      }
+    ]
+  },
+  "entity.red_panda.death": {
+    "category": "entity",
+    "subtitle": "entity.red_panda.death",
+    "sounds": [
+      {
+        "name": "pcp:entity/red_panda/death",
+        "stream": true,
+        "volume": 0.5
+      }
+    ]
+  }
+}
