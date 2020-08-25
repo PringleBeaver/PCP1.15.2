@@ -2,15 +2,20 @@ package com.pringlebeaver.pcp.entities;
 
 import com.pringlebeaver.pcp.entities.goals.GrassForageGoal;
 import com.pringlebeaver.pcp.init.ModEntityTypes;
+import com.pringlebeaver.pcp.init.items.ModItems;
+import com.pringlebeaver.pcp.util.ModChecker;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.IItemProvider;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -68,18 +73,11 @@ public class TurkeyEntity extends ChickenEntity implements IAnimatedEntity {
         super.updateAITasks();
     }
 
-    public void livingTick() {
-        if (this.world.isRemote) {
-            this.turkeyTimer = Math.max(0, this.turkeyTimer - 1);
-        }
-
-        super.livingTick();
-    }
 
     @OnlyIn(Dist.CLIENT)
     public void HandleStatusUpdate(byte id) {
         if (id == 10) {
-            turkeyTimer = 200;
+            turkeyTimer = 3000;
         } else {
             super.handleStatusUpdate(id);
         }
@@ -93,6 +91,21 @@ public class TurkeyEntity extends ChickenEntity implements IAnimatedEntity {
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8.0D);
     }
 
+    public void livingTick() {
+        if (this.world.isRemote) {
+            this.turkeyTimer = Math.max(0, this.turkeyTimer - 1);
+        }
+        super.livingTick();
+        System.out.println(ModChecker.isAutumnityLoaded);
+    }
+
+
+
+    @Nullable
+    @Override
+    public ItemEntity entityDropItem(IItemProvider itemIn, int offset) {
+        return super.entityDropItem(ModItems.TURKEY_EGG.get(), 0);
+    }
 
     @Override
     public EntityAnimationManager getAnimationManager() {

@@ -15,7 +15,7 @@ public class ModEntityTypes {
 
     public static DeferredRegister<EntityType<?>> ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.ENTITIES, PringlesCreaturePack.MOD_ID);
 
-    // Entity Types
+    // Mob Entity Types
 
     public static final RegistryObject<EntityType<RedPandaEntity>> RED_PANDA = ENTITY_TYPES.register("red_panda",
             () -> EntityType.Builder.create(RedPandaEntity::new, EntityClassification.CREATURE)
@@ -24,6 +24,13 @@ public class ModEntityTypes {
 
     public static final RegistryObject<EntityType<TurkeyEntity>> TURKEY = ENTITY_TYPES.register("turkey",
             () -> EntityType.Builder.create(TurkeyEntity::new, EntityClassification.CREATURE)
-                    .size(0.8f,0.75f)
+                    .size(0.75f,0.7f)
                     .build(new ResourceLocation(PringlesCreaturePack.MOD_ID, "turkey").toString()));
+
+    // Projectile Entities
+
+    public static final RegistryObject<EntityType<RedPandaEntity>> TURKEY_EGG = ENTITY_TYPES.register("turkey_egg",
+            () -> EntityType.Builder.create(RedPandaEntity::new, EntityClassification.MISC)
+                    .size(0.25f,0.25f)
+                    .build(new ResourceLocation(PringlesCreaturePack.MOD_ID, "turkey_egg").toString()));
 }
