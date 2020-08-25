@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "pcp:cooked_turkey"
+    }
+  ],
+  "result": {
+    "item": "pcp:stuffed_turkey",
+    "count": 1
+  }
+}

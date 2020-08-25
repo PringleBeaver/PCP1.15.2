@@ -72,7 +72,7 @@ public class GrassForageGoal extends Goal {
      * Execute a one shot task or start executing a continuous task
      */
     public void startExecuting() {
-        this.eatingGrassTimer = 200;
+        this.eatingGrassTimer = 3000;
         this.entityWorld.setEntityState(this.grassEaterEntity, (byte)10);
         this.grassEaterEntity.getNavigator().clearPath();
     }
@@ -126,7 +126,7 @@ public class GrassForageGoal extends Goal {
                         LootContext.Builder lootcontext$builder = (new LootContext.Builder((ServerWorld)this.grassEaterEntity.world)).withParameter(LootParameters.POSITION, blockpos$mutable).withParameter(LootParameters.THIS_ENTITY, this.grassEaterEntity).withRandom(random);
 
                         for(ItemStack itemstack : loottable.generate(lootcontext$builder.build(LootParameterSets.GIFT))) {
-                            this.grassEaterEntity.world.addEntity(new ItemEntity(this.grassEaterEntity.world, (double)((float)blockpos$mutable.getX() - MathHelper.sin(this.grassEaterEntity.renderYawOffset * ((float)Math.PI / 180F))), (double)blockpos$mutable.getY(), (double)((float)blockpos$mutable.getZ() + MathHelper.cos(this.grassEaterEntity.renderYawOffset * ((float)Math.PI / 180F))), itemstack));
+                            this.grassEaterEntity.world.addEntity(new ItemEntity(this.grassEaterEntity.world, (double)((float)blockpos$mutable.getX()), (double)blockpos$mutable.getY(), (double)((float)blockpos$mutable.getZ()), itemstack));
                         }
 
                     }

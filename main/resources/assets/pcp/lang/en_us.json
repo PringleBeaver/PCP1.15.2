@@ -7,5 +7,16 @@
 
   "entity.red_panda.ambient": "Red Panda squeaks",
   "entity.red_panda.death": "Red Panda dies",
-  "entity.red_panda.hurt": "Red Panda hurts"
+  "entity.red_panda.hurt": "Red Panda hurts",
+
+  "entity.pcp.turkey":"Turkey",
+
+  "item.pcp.turkey_spawn_egg": "Turkey Spawn Egg",
+  "item.pcp.turkey_egg": "Turkey Egg",
+  "item.pcp.turkey": "Raw Turkey",
+  "item.pcp.cooked_turkey": "Cooked Turkey",
+  "item.pcp.stuffed_turkey": "Stuffed Turkey"
+
+
+
 }

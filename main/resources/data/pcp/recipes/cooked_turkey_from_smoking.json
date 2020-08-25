@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "pcp:turkey"
+  },
+  "result": "pcp:cooked_turkey",
+  "experience": 0.35,
+  "cookingtime": 100
+}

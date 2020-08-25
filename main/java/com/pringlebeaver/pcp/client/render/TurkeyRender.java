@@ -26,13 +26,25 @@ public class TurkeyRender extends MobRenderer<TurkeyEntity, TurkeyModel> {
 
     @Override
     public void render(TurkeyEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
-
+        if (entityIn.isChild()) {
+            this.getEntityModel().babyModel(true);
+        }
+        else {
+            this.getEntityModel().babyModel(false);
+        }
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 
     @Override
     public ResourceLocation getEntityTexture(TurkeyEntity entity) {
             return TEXTURE;
+    }
+
+    @Override
+    protected float handleRotationFloat(TurkeyEntity livingBase, float partialTicks) {
+        float f = MathHelper.lerp(partialTicks, livingBase.oFlap, livingBase.wingRotation);
+        float f1 = MathHelper.lerp(partialTicks, livingBase.oFlapSpeed, livingBase.destPos);
+        return (MathHelper.sin(f) + 1.0F) * f1;
     }
 
     @Override
@@ -44,13 +56,6 @@ public class TurkeyRender extends MobRenderer<TurkeyEntity, TurkeyModel> {
             matrixStackIn.scale(1F, 1F, 1F);
         }
 
-    }
-
-    @Override
-    protected float handleRotationFloat(TurkeyEntity livingBase, float partialTicks) {
-        float f = MathHelper.lerp(partialTicks, livingBase.oFlap, livingBase.wingRotation);
-        float f1 = MathHelper.lerp(partialTicks, livingBase.oFlapSpeed, livingBase.destPos);
-        return (MathHelper.sin(f) + 1.0F) * f1;
     }
 }
 
