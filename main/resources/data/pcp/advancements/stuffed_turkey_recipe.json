@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "got_turkey": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pcp:cooked_turkey"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "pcp:stuffed_turkey"
+    ]
+  }
+}

@@ -107,6 +107,7 @@ public class TurkeyModel extends AnimatedEntityModel<TurkeyEntity> {
     }
 
     public void setRotationAngles(TurkeyEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+
         this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
         this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
         this.headbaby.rotateAngleX = headPitch * ((float)Math.PI / 180F);

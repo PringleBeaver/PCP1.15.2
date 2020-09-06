@@ -21,10 +21,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -35,6 +32,7 @@ import software.bernie.geckolib.animation.controller.AnimationController;
 import software.bernie.geckolib.animation.controller.EntityAnimationController;
 import software.bernie.geckolib.entity.IAnimatedEntity;
 import software.bernie.geckolib.event.AnimationTestEvent;
+import software.bernie.geckolib.event.CustomInstructionKeyframeEvent;
 import software.bernie.geckolib.manager.EntityAnimationManager;
 
 import javax.annotation.Nullable;
@@ -50,7 +48,7 @@ public class RedPandaEntity extends AnimalEntity implements IAnimatedEntity {
     private EntityAnimationManager manager = new EntityAnimationManager();
     private AnimationController controller = new EntityAnimationController(this, "animationController", 20, this::animationPredicate);
 
-    public static DataParameter<Boolean> IS_ATTACKING = EntityDataManager.createKey(RedPandaEntity.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> IS_ATTACKING = EntityDataManager.createKey(RedPandaEntity.class, DataSerializers.BOOLEAN);
 
     @Override
     protected void registerData() {
@@ -71,21 +69,22 @@ public class RedPandaEntity extends AnimalEntity implements IAnimatedEntity {
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(6, new PanicGoal(this, 2.0d));
-        this.goalSelector.addGoal(7, new BreedGoal(this, 1.0d));
-        this.goalSelector.addGoal(8, new TemptGoal(this, 1.5d, TEMPTATION_ITEMS, false));
-        this.goalSelector.addGoal(9, new FollowParentGoal(this, 1.0d));
-        this.goalSelector.addGoal(10, new WaterAvoidingRandomWalkingGoal(this, 1.0d));
-        this.goalSelector.addGoal(11, new LookAtGoal(this, PlayerEntity.class, 8.0f));
-        this.goalSelector.addGoal(12, new LookAtGoal(this, RedPandaEntity.class, 8.0f));
-        this.goalSelector.addGoal(13, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(6, new LeapAtTargetGoal(this, 0.4f));
+        this.goalSelector.addGoal(7, new PanicGoal(this, 2.0d));
+        this.goalSelector.addGoal(8, new BreedGoal(this, 1.0d));
+        this.goalSelector.addGoal(9, new TemptGoal(this, 1.5d, TEMPTATION_ITEMS, false));
+        this.goalSelector.addGoal(10, new FollowParentGoal(this, 1.0d));
+        this.goalSelector.addGoal(11, new WaterAvoidingRandomWalkingGoal(this, 1.0d));
+        this.goalSelector.addGoal(12, new LookAtGoal(this, PlayerEntity.class, 8.0f));
+        this.goalSelector.addGoal(13, new LookAtGoal(this, RedPandaEntity.class, 8.0f));
+        this.goalSelector.addGoal(14, new LookRandomlyGoal(this));
 
 
         // Attacking
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, SpiderEntity.class, false));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, CaveSpiderEntity.class, false));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, SilverfishEntity.class, false));
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, EndermiteEntity.class, false));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, CaveSpiderEntity.class, false));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, SilverfishEntity.class, false));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EndermiteEntity.class, false));
         this.goalSelector.addGoal(1, new RedPandaAttackGoal(this, 1.5D, false));
 
     }
@@ -119,27 +118,14 @@ public class RedPandaEntity extends AnimalEntity implements IAnimatedEntity {
         return SoundInit.RED_PANDA_DEATH.get();
     }
 
-    @Override
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        return super.attackEntityFrom(source, amount);
-
-    }
-
     private float func_226517_es_() {
         return (float)this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue();
     }
 
     //Attack
 
-
-    @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
-        return super.attackEntityAsMob(entityIn);
-    }
-
     public void setAttacking(boolean bool){
         dataManager.set(IS_ATTACKING, bool);
-        LOGGER.debug(this.dataManager.get(IS_ATTACKING));
     }
 
     public boolean getAttacking(){
@@ -179,9 +165,9 @@ public class RedPandaEntity extends AnimalEntity implements IAnimatedEntity {
     }
 
     private <E extends RedPandaEntity> boolean animationPredicate(AnimationTestEvent<E> event) {
-        boolean attacking = this.getAttacking();
-         if (attacking) {
-           controller.setAnimation(new AnimationBuilder().addAnimation("animation.pcp.attack"));
+         if (getAttacking()) {
+             System.out.println("Played Animation");
+           controller.setAnimation(new AnimationBuilder().addAnimation("animation.pcp.attack", true));
           return true;
      } else {
         return false;
@@ -191,10 +177,15 @@ public class RedPandaEntity extends AnimalEntity implements IAnimatedEntity {
     }
 
 
-
     private void registerAnimationControllers() {
         manager.addAnimationController(controller);
+        this.controller.registerCustomInstructionListener(this::customInstructionListener);
 
+    }
+
+    private <ENTITY extends Entity> void customInstructionListener(CustomInstructionKeyframeEvent<ENTITY> event) {
+        setAttacking(false);
+        System.out.println(IS_ATTACKING.equals(true));
     }
 
 }

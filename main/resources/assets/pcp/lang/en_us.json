@@ -11,11 +11,29 @@
 
   "entity.pcp.turkey":"Turkey",
 
+  "item.pcp.seahorse_spawn_egg": "Seahorse Spawn Egg",
+  "entity.pcp.seahorse":"Seahorse",
+  "pcp.seahorse.variant.yellow": "Yellow",
+  "pcp.seahorse.variant.red": "Red",
+  "pcp.seahorse.variant.black": "Black",
+  "pcp.seahorse.variant.blue": "Blue",
+  "pcp.seahorse.variant.purple": "Purple",
+
   "item.pcp.turkey_spawn_egg": "Turkey Spawn Egg",
   "item.pcp.turkey_egg": "Turkey Egg",
   "item.pcp.turkey": "Raw Turkey",
   "item.pcp.cooked_turkey": "Cooked Turkey",
-  "item.pcp.stuffed_turkey": "Stuffed Turkey"
+  "item.pcp.stuffed_turkey": "Stuffed Turkey",
+  "entity.turkey.hurt": "Turkey hurts",
+  "entity.turkey.death": "Turkey dies",
+  "entity.turkey.ambient": "Turkey gobbles",
+
+  "item.pcp.yellow_seahorse_bucket": "Bucket of Seahorse",
+  "item.pcp.red_seahorse_bucket": "Bucket of Seahorse",
+  "item.pcp.black_seahorse_bucket": "Bucket of Seahorse",
+  "item.pcp.blue_seahorse_bucket": "Bucket of Seahorse",
+  "item.pcp.purple_seahorse_bucket": "Bucket of Seahorse",
+  "effect.pcp.stuffed": "Stuffed"
 
 
 

@@ -1,9 +1,10 @@
 package com.pringlebeaver.pcp;
 
+import com.markus1002.autumnity.core.registry.ModEffects;
+import com.pringlebeaver.pcp.effects.StuffedEffect;
 import com.pringlebeaver.pcp.init.ModEntityTypes;
 import com.pringlebeaver.pcp.init.items.ModItems;
 import com.pringlebeaver.pcp.init.SoundInit;
-import com.pringlebeaver.pcp.util.ModChecker;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,6 +22,7 @@ public class PringlesCreaturePack
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static final String MOD_ID = "pcp";
+
 
     final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -40,7 +42,6 @@ public class PringlesCreaturePack
 
     private void setup(final FMLCommonSetupEvent event)
     {
-
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)
@@ -51,7 +52,7 @@ public class PringlesCreaturePack
     public static final ItemGroup PCPTAB = new ItemGroup("pcpTab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ModItems.COOKED_TURKEY.get());
+            return new ItemStack(ModItems.RED_SEAHORSE_BUCKET.get());
         }
     };
 

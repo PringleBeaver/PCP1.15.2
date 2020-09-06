@@ -2,6 +2,7 @@ package com.pringlebeaver.pcp.entities.projectiles;
 
 import com.pringlebeaver.pcp.entities.TurkeyEntity;
 import com.pringlebeaver.pcp.init.ModEntityTypes;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.EggEntity;
@@ -17,9 +18,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TurkeyEggEntity extends EggEntity {
-    public TurkeyEggEntity(EntityType<? extends EggEntity> p_i50154_1_, World p_i50154_2_) {
-        super(p_i50154_1_, p_i50154_2_);
-    }
+
 
     public TurkeyEggEntity(World worldIn, LivingEntity throwerIn) {
         super(worldIn, throwerIn);

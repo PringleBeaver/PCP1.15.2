@@ -36,5 +36,38 @@
         "volume": 0.5
       }
     ]
+  },
+  "entity.turkey.hurt": {
+    "category": "entity",
+    "subtitle": "entity.turkey.hurt",
+    "sounds": [
+      {
+        "name": "pcp:entity/turkey/hurt",
+        "stream": true,
+        "volume": 0.5
+      }
+    ]
+  },
+  "entity.turkey.death": {
+    "category": "entity",
+    "subtitle": "entity.turkey.death",
+    "sounds": [
+      {
+        "name": "pcp:entity/turkey/hurt",
+        "stream": true,
+        "volume": 0.5
+      }
+    ]
+  },
+  "entity.turkey.ambient": {
+    "category": "entity",
+    "subtitle": "entity.turkey.ambient",
+    "sounds": [
+      {
+        "name": "pcp:entity/turkey/ambient",
+        "stream": true,
+        "volume": 0.5
+      }
+    ]
   }
 }

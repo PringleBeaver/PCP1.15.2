@@ -2,6 +2,7 @@ package com.pringlebeaver.pcp.util;
 
 import com.pringlebeaver.pcp.PringlesCreaturePack;
 import com.pringlebeaver.pcp.client.render.RedPandaRender;
+import com.pringlebeaver.pcp.client.render.SeahorseRender;
 import com.pringlebeaver.pcp.client.render.TurkeyRender;
 import com.pringlebeaver.pcp.init.ModEntityTypes;
 import com.pringlebeaver.pcp.items.ModSpawnEggItems;
@@ -20,6 +21,7 @@ public class ClientEventBusSubscriber {
     public static void onClientSetup(FMLClientSetupEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.RED_PANDA.get(), RedPandaRender::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.TURKEY.get(),TurkeyRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.SEAHORSE.get(), SeahorseRender::new);
     }
 
     @SubscribeEvent

@@ -2,7 +2,7 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.pcp.attack": {
-			"animation_length": 1.04,
+			"animation_length": 0.8,
 			"bones": {
 				"body": {
 					"rotation": {
@@ -206,6 +206,9 @@
 						}
 					}
 				}
+			},
+			"timeline": {
+				"0.75": ["Yes"]
 			}
 		}
 	}

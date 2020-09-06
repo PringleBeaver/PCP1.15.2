@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.pathfinding.Path;
+import net.minecraft.util.Hand;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,14 +41,5 @@ public class RedPandaAttackGoal extends MeleeAttackGoal {
         this.longMemory = useLongMemory;
         this.setMutexFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
 
-
-
         }
-
-
-
-    protected void checkAndPerformAttack(RedPandaEntity enemy, double distToEnemySqr) {
-
-
-    }
 }
